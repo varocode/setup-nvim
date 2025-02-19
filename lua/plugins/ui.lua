@@ -69,7 +69,7 @@ return {
 				lualine_a = {
 					{
 						"mode",
-						icon = "󱗞",
+						icon = "🚀",
 					},
 				},
 			},
@@ -132,7 +132,7 @@ return {
 		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Modo Zen" } },
 	},
 
-  -- Snacks: Mejoras en la interfaz de usuario
+	-- Snacks: Mejoras en la interfaz de usuario
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
@@ -140,10 +140,10 @@ return {
 		---@type snacks.Config
 		opts = {
 			bigfile = { enabled = true },
-			dashboard = { 
-        enabled = true,
-        preset = {
-          header = [[
+			dashboard = {
+				enabled = true,
+				preset = {
+					header = [[
 					                                                                                 
 ██╗   ██╗ █████╗ ██████╗  ██████╗        ██████╗ ██████╗ ██████╗ ███████╗
 ██║   ██║██╔══██╗██╔══██╗██╔═══██╗      ██╔════╝██╔═══██╗██╔══██╗██╔════╝
@@ -154,38 +154,44 @@ return {
 
 "El crecimiento es la acumulación de pequeños esfuerzos diarios"
                                                                
-]]},
-        sections = {
-          { section = "header" },
-          {
-            pane = 2,
-            section = "terminal",
-            cmd = "/home/varodev/.local/bin/colorscript -e pinguco",
-            height = 10,
-            padding = 1,
-          },
-          { section = "keys", gap = 1, padding = 1 },
-          { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-          { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-          {
-            pane = 2,
-            icon = " ",
-            title = "Git Status",
-            section = "terminal",
-            enabled = function()
-              return Snacks.git.get_root() ~= nil
-            end,
-            cmd = "git status --short --branch --renames",
-            height = 5,
-            padding = 1,
-            ttl = 5 * 60,
-            indent = 3,
-          },
-          { section = "startup" },
-        },
-
-    
-    },
+]],
+				},
+				sections = {
+					{ section = "header" },
+					{
+						pane = 2,
+						section = "terminal",
+						cmd = "/home/varodev/.local/bin/colorscript -e pinguco",
+						height = 10,
+						padding = 1,
+					},
+					{ section = "keys", gap = 1, padding = 1 },
+					{
+						pane = 2,
+						icon = " ",
+						title = "Recent Files",
+						section = "recent_files",
+						indent = 2,
+						padding = 1,
+					},
+					{ pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+					{
+						pane = 2,
+						icon = " ",
+						title = "Git Status",
+						section = "terminal",
+						enabled = function()
+							return Snacks.git.get_root() ~= nil
+						end,
+						cmd = "git status --short --branch --renames",
+						height = 5,
+						padding = 1,
+						ttl = 5 * 60,
+						indent = 3,
+					},
+					{ section = "startup" },
+				},
+			},
 			explorer = { enabled = true },
 			indent = { enabled = true },
 			input = { enabled = true },
