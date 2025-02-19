@@ -75,12 +75,25 @@ keymap.set("n", "<leader>i", function()
 	require("varocode.lsp").toggleInlayHints()
 end)
 
-
 -- 🏃 Salir de cualquier modo con Ctrl + C
 vim.keymap.set({ "i", "n", "v", "s", "o", "c", "t" }, "<C-c>", [[<C-\><C-n>]], { noremap = true, silent = true })
 
 -- 📂 Abrir el directorio padre con Oil.nvim
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Abrir directorio padre con Oil" })
+
+-- Bracey
+
+-- Iniciar Bracey
+vim.keymap.set("n", "<leader>Bs", ":Bracey<CR>", { desc = "Iniciar Bracey" })
+
+-- Detener Bracey
+vim.keymap.set("n", "<leader>Bp", ":BraceyStop<CR>", { desc = "Detener Bracey" })
+
+-- Recargar la página actual
+vim.keymap.set("n", "<leader>Br", ":BraceyReload<CR>", { desc = "Recargar Bracey" })
+
+-- Evaluar el buffer actual en el navegador
+vim.keymap.set("n", "<leader>Bt", ":BraceyEval<CR>", { desc = "Evaluar con Bracey" })
 
 -- 📌 Asignar Ctrl + S para guardar en modo normal
 vim.api.nvim_set_keymap("n", "<C-s>", ":lua SaveFile()<CR>", { noremap = true, silent = true })
