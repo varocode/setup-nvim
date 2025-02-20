@@ -64,10 +64,9 @@ require("lazy").setup({
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
 
-	dev = {
-		path = "~/.ghq/github.com",
-	},
-	install = { colorscheme = { "tokyonight", "habamax" } },
+	-- dev = {
+	-- 	path = "~/.ghq/github.com",
+	-- },
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 		notify = false, -- notify on update
