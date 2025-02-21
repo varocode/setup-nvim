@@ -69,8 +69,22 @@ return {
 	{
 		"monaqa/dial.nvim",
 		keys = {
-			{ "<C-a>", function() return require("dial.map").inc_normal() end, expr = true, desc = "Incrementar número" },
-			{ "<C-x>", function() return require("dial.map").dec_normal() end, expr = true, desc = "Decrementar número" },
+			{
+				"<C-a>",
+				function()
+					return require("dial.map").inc_normal()
+				end,
+				expr = true,
+				desc = "Incrementar número",
+			},
+			{
+				"<C-x>",
+				function()
+					return require("dial.map").dec_normal()
+				end,
+				expr = true,
+				desc = "Decrementar número",
+			},
 		},
 		config = function()
 			local augend = require("dial.augend")

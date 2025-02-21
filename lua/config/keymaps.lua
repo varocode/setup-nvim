@@ -6,18 +6,18 @@ local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
 -- Realizar acciones sin afectar los registros
-keymap.set("n", "x", '"_x') -- Eliminar un carácter sin guardarlo en el portapapeles
-keymap.set("n", "<Leader>p", '"0p') -- Pegar desde el registro 0
-keymap.set("n", "<Leader>P", '"0P') -- Pegar antes desde el registro 0
-keymap.set("v", "<Leader>p", '"0p') -- Pegar en modo visual desde el registro 0
-keymap.set("n", "<Leader>c", '"_c') -- Cortar sin guardar en el portapapeles
-keymap.set("n", "<Leader>C", '"_C') -- Cortar sin guardar en el portapapeles (línea completa)
-keymap.set("v", "<Leader>c", '"_c') -- Cortar en modo visual sin guardar en el portapapeles
-keymap.set("v", "<Leader>C", '"_C') -- Cortar en modo visual sin guardar en el portapapeles (línea completa)
-keymap.set("n", "<Leader>d", '"_d') -- Eliminar sin afectar el portapapeles
-keymap.set("n", "<Leader>D", '"_D') -- Eliminar línea sin afectar el portapapeles
-keymap.set("v", "<Leader>d", '"_d') -- Eliminar en modo visual sin afectar el portapapeles
-keymap.set("v", "<Leader>D", '"_D') -- Eliminar línea en modo visual sin afectar el portapapeles
+-- keymap.set("n", "x", '"_x') -- Eliminar un carácter sin guardarlo en el portapapeles
+-- keymap.set("n", "<Leader>p", '"0p') -- Pegar desde el registro 0
+-- keymap.set("n", "<Leader>P", '"0P') -- Pegar antes desde el registro 0
+-- keymap.set("v", "<Leader>p", '"0p') -- Pegar en modo visual desde el registro 0
+-- keymap.set("n", "<Leader>c", '"_c') -- Cortar sin guardar en el portapapeles
+-- keymap.set("n", "<Leader>C", '"_C') -- Cortar sin guardar en el portapapeles (línea completa)
+-- keymap.set("v", "<Leader>c", '"_c') -- Cortar en modo visual sin guardar en el portapapeles
+-- keymap.set("v", "<Leader>C", '"_C') -- Cortar en modo visual sin guardar en el portapapeles (línea completa)
+-- keymap.set("n", "<Leader>d", '"_d') -- Eliminar sin afectar el portapapeles
+-- keymap.set("n", "<Leader>D", '"_D') -- Eliminar línea sin afectar el portapapeles
+-- keymap.set("v", "<Leader>d", '"_d') -- Eliminar en modo visual sin afectar el portapapeles
+-- keymap.set("v", "<Leader>D", '"_D') -- Eliminar línea en modo visual sin afectar el portapapeles
 
 -- Incrementar / decrementar números
 keymap.set("n", "+", "<C-a>") -- Incrementar número bajo el cursor
