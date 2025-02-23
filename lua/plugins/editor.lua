@@ -13,6 +13,53 @@ return {
 		},
 	},
 
+	{
+		-- Plugin: goto-preview
+		-- URL: https://github.com/rmagatti/goto-preview
+		-- Description: Provides preview functionality for definitions, declarations, implementations, type definitions, and references.
+		"rmagatti/goto-preview",
+		event = "BufEnter", -- Load the plugin when a buffer is entered
+		config = true, -- Enable default configuration
+		keys = {
+			{
+				"gpd",
+				"<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+				noremap = true, -- Do not allow remapping
+				desc = "goto preview definition", -- Description for the keybinding
+			},
+			{
+				"gpD",
+				"<cmd>lua require('goto-preview').goto_preview_declaration()<CR>",
+				noremap = true,
+				desc = "goto preview declaration",
+			},
+			{
+				"gpi",
+				"<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+				noremap = true,
+				desc = "goto preview implementation",
+			},
+			{
+				"gpy",
+				"<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+				noremap = true,
+				desc = "goto preview type definition",
+			},
+			{
+				"gpr",
+				"<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+				noremap = true,
+				desc = "goto preview references",
+			},
+			{
+				"gP",
+				"<cmd>lua require('goto-preview').close_all_win()<CR>",
+				noremap = true,
+				desc = "close all preview windows",
+			},
+		},
+	},
+
 	-- 📌 Resaltado de colores HSL en el código
 	{
 		"echasnovski/mini.hipatterns",
@@ -157,7 +204,7 @@ return {
 			local actions = require("telescope.actions")
 			local fb_actions = require("telescope").extensions.file_browser.actions
 
-			opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+			opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
 				wrap_results = true, -- Ajustar resultados al ancho de la pantalla
 				layout_strategy = "horizontal", -- Distribución horizontal de los resultados
 				layout_config = { prompt_position = "top" }, -- Ubicar el prompt arriba

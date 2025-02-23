@@ -1,5 +1,10 @@
 vim.g.mapleader = " "
 
+-- Habilitar el corrector ortográfico
+vim.opt.spell = false
+-- Usar corrector en español e inglés
+vim.opt.spelllang = "es,en"
+
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 

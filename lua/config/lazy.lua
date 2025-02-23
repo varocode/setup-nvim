@@ -21,7 +21,7 @@ require("lazy").setup({
 
 		-- Import any extra modules here
 		-- Editor plugins
-		{ import = "lazyvim.plugins.extras.editor.harpoon2" },
+		-- { import = "lazyvim.plugins.extras.editor.harpoon2" },
 		{ import = "lazyvim.plugins.extras.editor.mini-files" },
 		{ import = "lazyvim.plugins.extras.editor.snacks_explorer" },
 		{ import = "lazyvim.plugins.extras.editor.snacks_picker" },

@@ -5,19 +5,31 @@ discipline.cowboy()
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
--- Realizar acciones sin afectar los registros
--- keymap.set("n", "x", '"_x') -- Eliminar un carácter sin guardarlo en el portapapeles
--- keymap.set("n", "<Leader>p", '"0p') -- Pegar desde el registro 0
--- keymap.set("n", "<Leader>P", '"0P') -- Pegar antes desde el registro 0
--- keymap.set("v", "<Leader>p", '"0p') -- Pegar en modo visual desde el registro 0
--- keymap.set("n", "<Leader>c", '"_c') -- Cortar sin guardar en el portapapeles
--- keymap.set("n", "<Leader>C", '"_C') -- Cortar sin guardar en el portapapeles (línea completa)
--- keymap.set("v", "<Leader>c", '"_c') -- Cortar en modo visual sin guardar en el portapapeles
--- keymap.set("v", "<Leader>C", '"_C') -- Cortar en modo visual sin guardar en el portapapeles (línea completa)
--- keymap.set("n", "<Leader>d", '"_d') -- Eliminar sin afectar el portapapeles
--- keymap.set("n", "<Leader>D", '"_D') -- Eliminar línea sin afectar el portapapeles
--- keymap.set("v", "<Leader>d", '"_d') -- Eliminar en modo visual sin afectar el portapapeles
--- keymap.set("v", "<Leader>D", '"_D') -- Eliminar línea en modo visual sin afectar el portapapeles
+-- 📌 Configuración de atajos para hop.nvim
+
+-- 🔎 Saltar a una palabra en cualquier parte del buffer
+keymap.set("n", "<Leader>hw", "<cmd>HopWord<CR>", opts)
+
+-- 🔎 Saltar a cualquier línea en el buffer
+keymap.set("n", "<Leader>hl", "<cmd>HopLine<CR>", opts)
+
+-- 🔎 Saltar a un único carácter en el buffer
+keymap.set("n", "<Leader>hc", "<cmd>HopChar1<CR>", opts)
+
+-- 🔎 Saltar a una secuencia de dos caracteres en el buffer
+keymap.set("n", "<Leader>hC", "<cmd>HopChar2<CR>", opts)
+
+-- 🔎 Saltar a una palabra en modo visual (útil para selección rápida)
+keymap.set("v", "<Leader>hw", "<cmd>HopWord<CR>", opts)
+
+-- 🔎 Saltar a una línea en modo visual
+keymap.set("v", "<Leader>hl", "<cmd>HopLine<CR>", opts)
+
+-- 🔎 Saltar a una palabra en modo operador (permite borrar o cambiar palabras fácilmente)
+keymap.set("o", "<Leader>hw", "<cmd>HopWord<CR>", opts)
+
+-- 🔎 Saltar a una línea en modo operador (útil para borrar hasta una línea específica)
+keymap.set("o", "<Leader>hl", "<cmd>HopLine<CR>", opts)
 
 -- Incrementar / decrementar números
 keymap.set("n", "+", "<C-a>") -- Incrementar número bajo el cursor
@@ -33,8 +45,8 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 -- vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
 -- Evitar la continuación automática de comentarios
-keymap.set("n", "<Leader>o", "o<Esc>^Da", opts) -- Insertar nueva línea sin mantener el comentario anterior
-keymap.set("n", "<Leader>O", "O<Esc>^Da", opts) -- Insertar línea arriba sin continuar el comentario
+keymap.set("n", "<C-.>", "o<Esc>^Da", opts) -- Insertar nueva línea sin mantener el comentario anterior
+keymap.set("n", "<C-,>", "O<Esc>^Da", opts) -- Insertar línea arriba sin continuar el comentario
 
 -- Gestión del historial de saltos (Jump List)
 keymap.set("n", "<C-m>", "<C-i>", opts) -- Moverse entre posiciones del historial
@@ -80,6 +92,21 @@ vim.keymap.set({ "i", "n", "v", "s", "o", "c", "t" }, "<C-c>", [[<C-\><C-n>]], {
 
 -- 📂 Abrir el directorio padre con Oil.nvim
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Abrir directorio padre con Oil" })
+
+----- OBSIDIAN -----
+vim.keymap.set(
+	"n",
+	"<leader>oc",
+	"<cmd>lua require('obsidian').util.toggle_checkbox()<CR>",
+	{ desc = "Obsidian Check Checkbox" }
+)
+vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert Obsidian Template" })
+vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Open in Obsidian App" })
+vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Show ObsidianBacklinks" })
+vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Show ObsidianLinks" })
+vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", { desc = "Create New Note" })
+vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Search Obsidian" })
+vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quick Switch" })
 
 -- Bracey
 
