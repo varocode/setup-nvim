@@ -205,6 +205,58 @@ return {
 			scroll = { enabled = true },
 			statuscolumn = { enabled = true },
 			words = { enabled = true },
+			image = { enabled = true },
+			lazygit = {
+				-- automatically configure lazygit to use the current colorscheme
+				-- and integrate edit with the current neovim instance
+				configure = true,
+				-- extra configuration for lazygit that will be merged with the default
+				-- snacks does NOT have a full yaml parser, so if you need `"test"` to appear with the quotes
+				-- you need to double quote it: `"\"test\""`
+				config = {
+					os = { editPreset = "nvim-remote" },
+					gui = {
+						-- set to an empty string "" to disable icons
+						nerdFontsVersion = "3",
+					},
+				},
+				win = {
+					style = "float",
+					height = 100,
+					width = 1000,
+				},
+			},
+			terminal = {
+				shell = "zsh", -- Usa Zsh en la terminal
+				start_insert = true, -- Comienza en modo insert
+				auto_insert = true, -- Entra en modo insert cuando entres en la terminal
+				auto_close = true, -- Cierra la terminal cuando el proceso termina
+				interactive = true, -- Activa start_insert, auto_insert y auto_close juntos
+				win = {
+					style = "float", -- Terminal en ventana flotante
+					border = "rounded", -- Bordes redondeados
+					height = 0.6, -- Tamaño de la ventana flotante
+					width = 0.6,
+				},
+				keys = {
+					q = "hide", -- Ocultar terminal con `q`
+					["<esc>"] = {
+						function(self)
+							self.esc_timer = self.esc_timer or (vim.uv or vim.loop).new_timer()
+							if self.esc_timer:is_active() then
+								self.esc_timer:stop()
+								vim.cmd("stopinsert")
+							else
+								self.esc_timer:start(200, 0, function() end)
+								return "<esc>"
+							end
+						end,
+						mode = "t",
+						expr = true,
+						desc = "Doble Escape para salir del modo terminal",
+					},
+				},
+			},
 		},
 	},
 }

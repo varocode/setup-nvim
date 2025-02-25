@@ -153,3 +153,26 @@ function SaveFile()
 		vim.notify("❌ Error al guardar: " .. err, vim.log.levels.ERROR)
 	end
 end
+
+-- Atajos para python
+vim.api.nvim_set_keymap("n", "<leader>rf", ":!python %<CR>", { noremap = true }) -- Ejecutar el archivo actual
+vim.api.nvim_set_keymap("n", "<leader>rb", ":!black %<CR>", { noremap = true }) -- Formatear con Black
+
+-- Terminal snacks
+vim.keymap.set("n", "<leader>tf", function()
+	require("snacks.terminal").open(nil, {
+		win = { style = "float", border = "rounded", height = 0.5, width = 0.5 }, -- 50% de la pantalla
+	})
+end, { desc = "Abrir Terminal Flotante Pequeña" })
+
+vim.keymap.set("n", "<leader>ts", function()
+	require("snacks.terminal").open(nil, {
+		win = { style = "split", position = "bottom", height = 0.3 }, -- 30% de la pantalla abajo
+	})
+end, { desc = "Abrir Terminal en Split Abajo" })
+
+vim.keymap.set("n", "<leader>tr", function()
+	require("snacks.terminal").open(nil, {
+		win = { style = "split", position = "right", width = 0.3 }, -- 30% de la pantalla a la derecha
+	})
+end, { desc = "Abrir Terminal en Split a la Derecha" })
