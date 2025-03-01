@@ -3,6 +3,8 @@ return {
 		{
 			-- 🌟 Plugin para habilitar la transparencia en Neovim
 			"xiyaowong/transparent.nvim",
+			-- event = "VeryLazy", -- Se carga cuando abres un archivo
+			-- lazy = true, -- Se asegura que no cargue en el arranque
 			config = function()
 				require("transparent").setup({
 					enable = true, -- Habilita la transparencia en Neovim
@@ -64,71 +66,70 @@ return {
 		-- ⚙ Configuración de LazyVim
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "sakura", -- Se configura OldWorld como el tema predeterminado
+			colorscheme = "kanagawa", -- Se configura OldWorld como el tema predeterminado
 		},
 	},
 
 	-- 🌙 TEMAS ADICIONALES (Comentados, puedes activarlos si los necesitas)
 
 	-- {
-	--   -- 🎨 Tema Catppuccin con soporte para transparencia y varias variantes
-	--   "catppuccin/nvim",
-	--   name = "catppuccin",
-	--   lazy = false, -- Cargar de inmediato
-	--   opts = {
-	--     transparent_background = true, -- Habilita fondo transparente
-	--     flavour = "mocha", -- Establece la variante "mocha"
-	--   },
+	-- 	-- 🎨 Tema Catppuccin con soporte para transparencia y varias variantes
+	-- 	"catppuccin/nvim",
+	-- 	name = "catppuccin",
+	-- 	lazy = false, -- Cargar de inmediato
+	-- 	opts = {
+	-- 		transparent_background = true, -- Habilita fondo transparente
+	-- 		flavour = "mocha", -- Establece la variante "mocha"
+	-- 	},
+	-- },
+
+	{
+		-- 🎨 Tema Kanagawa: Esquema de color japonés con transparencias y personalización avanzada
+		"rebelot/kanagawa.nvim",
+		name = "kanagawa",
+		priority = 1000, -- Alta prioridad para cargarlo temprano
+		opts = {
+			transparent = true, -- Habilita la transparencia
+			theme = "dragon", -- Usa la variante "dragon" del tema
+		},
+	},
+
+	-- {
+	-- 	-- 🌿 Tema Everforest con fondo "hard" y transparencias opcionales
+	-- 	"neanias/everforest-nvim",
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		require("everforest").setup({
+	-- 			background = "hard", -- Fondo en modo "hard"
+	-- 			italics = true, -- Habilita cursivas
+	-- 			transparent_background_level = 1, -- Niveles de transparencia
+	-- 		})
+	-- 	end,
 	-- },
 
 	-- {
-	--   -- 🎨 Tema Kanagawa: Esquema de color japonés con transparencias y personalización avanzada
-	--   "rebelot/kanagawa.nvim",
-	--   name = "kanagawa",
-	--   priority = 1000, -- Alta prioridad para cargarlo temprano
-	--   opts = {
-	--     transparent = true, -- Habilita la transparencia
-	--     theme = "dragon", -- Usa la variante "dragon" del tema
-	--   },
+	-- 	-- 🌃 Tema TokyoNight, moderno y con opciones de personalización
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		bold = true,
+	-- 		italic = true,
+	-- 		transparent = true, -- Fondo transparente
+	-- 	},
 	-- },
-
+	--
 	-- {
-	--   -- 🌿 Tema Everforest con fondo "hard" y transparencias opcionales
-	--   "neanias/everforest-nvim",
-	--   lazy = false,
-	--   config = function()
-	--     require("everforest").setup({
-	--       background = "hard", -- Fondo en modo "hard"
-	--       italics = true, -- Habilita cursivas
-	--       transparent_background_level = 1, -- Niveles de transparencia
-	--     })
-	--   end,
-	-- },
-
-	-- {
-	--   -- 🌃 Tema TokyoNight, moderno y con opciones de personalización
-	--   "folke/tokyonight.nvim",
-	--   lazy = false,
-	--   priority = 1000,
-	--   opts = {
-	--     bold = true,
-	--     italic = true,
-	--     transparent = true, -- Fondo transparente
-	--   },
-	-- },
-
-	-- {
-	--   -- 🌹 Tema Rose Pine con variante "moon" y opciones de transparencia
-	--   "rose-pine/neovim",
-	--   name = "rose-pine",
-	--   opts = {
-	--     variant = "moon", -- Usa la variante "moon"
-	--     styles = {
-	--       bold = true,
-	--       italic = true,
-	--       transparency = true, -- Activa transparencia
-	--     },
-	--   },
+	-- 	-- 🌹 Tema Rose Pine con variante "moon" y opciones de transparencia
+	-- 	"rose-pine/neovim",
+	-- 	name = "rose-pine",
+	-- 	opts = {
+	-- 		variant = "moon", -- Usa la variante "moon"
+	-- 		styles = {
+	-- 			bold = true,
+	-- 			italic = true,
+	-- 			transparency = true, -- Activa transparencia
+	-- 		},
+	-- 	},
 	-- },
 }
-

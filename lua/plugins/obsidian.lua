@@ -6,6 +6,8 @@ return {
 		-- URL: https://github.com/epwalsh/obsidian.nvim
 		-- Description: A Neovim plugin for integrating with Obsidian, a powerful knowledge base that works on top of a local folder of plain text Markdown files.
 		"epwalsh/obsidian.nvim",
+		event = { "BufReadPost", "BufNewFile" }, -- Se carga cuando abres un archivo
+		lazy = true, -- Se asegura que no cargue en el arranque
 		version = "*", -- Use the latest release instead of the latest commit (recommended)
 
 		dependencies = {

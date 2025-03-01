@@ -176,3 +176,6 @@ vim.keymap.set("n", "<leader>tr", function()
 		win = { style = "split", position = "right", width = 0.3 }, -- 30% de la pantalla a la derecha
 	})
 end, { desc = "Abrir Terminal en Split a la Derecha" })
+
+-- crea un atajo de teclado para regresar al dashboard
+vim.keymap.set("n", "<leader>d1", ":lua Snacks.dashboard.open()<CR>", { desc = "Open Dashboard" })

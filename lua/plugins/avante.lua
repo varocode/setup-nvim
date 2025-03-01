@@ -1,8 +1,9 @@
 return {
 	"yetone/avante.nvim",
-	event = "VeryLazy",
-	lazy = false,
-	version = false, -- set this if you want to always pull the latest change
+	event = { "BufReadPost", "BufNewFile" }, -- Se carga cuando abres un archivo
+	cmd = { "Avante" },
+	lazy = true,
+	version = "*", -- set this if you want to always pull the latest change
 	opts = {
 		---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
 		provider = "copilot", -- Recommend using Claude
@@ -106,6 +107,7 @@ return {
 			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
 			event = "VeryLazy",
+			lazy = true,
 			opts = {
 				-- recommended settings
 				default = {
@@ -122,6 +124,9 @@ return {
 		{
 			-- Make sure to set this up properly if you have lazy=true
 			"MeanderingProgrammer/render-markdown.nvim",
+			event = "VeryLazy",
+			lazy = true,
+
 			opts = {
 				file_types = { "markdown", "Avante" },
 			},
@@ -129,4 +134,3 @@ return {
 		},
 	},
 }
-
