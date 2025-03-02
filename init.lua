@@ -9,5 +9,4 @@ vim.print = _G.dd
 
 require("config.lazy")
 
-vim.opt.timeoutlen = 500
-vim.opt.ttimeoutlen = 0
+require("core.statusline")

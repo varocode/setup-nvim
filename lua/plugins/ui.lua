@@ -55,29 +55,6 @@ return {
 		},
 	},
 
-	-- Línea de estado personalizable con Lualine
-	{
-		"nvim-lualine/lualine.nvim",
-		-- event = "VeryLazy",
-		event = "VeryLazy", -- Se carga cuando abres un archivo
-		lazy = true, -- Se asegura que no cargue en el arranque
-		requires = { "nvim-tree/nvim-web-devicons", opt = true },
-		opts = {
-			options = {
-				theme = "oldworld",
-				icons_enabled = true,
-			},
-			sections = {
-				lualine_a = {
-					{
-						"mode",
-						icon = "🚀",
-					},
-				},
-			},
-		},
-	},
-
 	-- Bufferline para gestión de pestañas
 	{
 		"akinsho/bufferline.nvim",

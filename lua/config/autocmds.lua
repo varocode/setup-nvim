@@ -19,3 +19,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.cmd("!black %")
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	callback = function()
+		local file = vim.fn.expand("%:t") -- Obtiene la ruta completa del archivo actual
+		if file ~= "" then
+			vim.fn.system("tmux rename-window '" .. file .. "'")
+		end
+	end,
+})

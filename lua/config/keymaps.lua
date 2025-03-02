@@ -125,9 +125,9 @@ vim.keymap.set("n", "<leader>Bt", ":BraceyEval<CR>", { desc = "Evaluar con Brace
 -- 📌 Asignar Ctrl + S para guardar en modo normal
 vim.api.nvim_set_keymap("n", "<C-s>", ":lua SaveFile()<CR>", { noremap = true, silent = true })
 
--- 📌 Asignar Ctrl + S para guardar en modo insert y visual
-vim.api.nvim_set_keymap("i", "<C-s>", "<Esc>:lua SaveFile()<CR>i", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-s>", "<Esc>:lua SaveFile()<CR>gv", { noremap = true, silent = true })
+-- 📌 Asignar Ctrl + S para guardar en modo insert y visual (corregido)
+vim.api.nvim_set_keymap("i", "<C-s>", "<Esc>:lua SaveFile()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-s>", "<Esc>:lua SaveFile()<CR>gv<Esc>", { noremap = true, silent = true })
 
 -- 💾 Función personalizada para guardar archivos
 function SaveFile()
@@ -179,3 +179,22 @@ end, { desc = "Abrir Terminal en Split a la Derecha" })
 
 -- crea un atajo de teclado para regresar al dashboard
 vim.keymap.set("n", "<leader>d1", ":lua Snacks.dashboard.open()<CR>", { desc = "Open Dashboard" })
+
+--- recargar neovim y sincronizar plugins
+vim.keymap.set("n", "<leader>rs", function()
+	-- Guardar todos los archivos abiertos antes de recargar
+	vim.cmd("wa")
+
+	-- Volver a cargar la configuración de Neovim
+	for _, source in ipairs(vim.fn.glob(vim.fn.stdpath("config") .. "/lua/**/*.lua", true, true)) do
+		if not source:match("lazy%.lua$") then
+			dofile(source)
+		end
+	end
+
+	-- Sincronizar Lazy.nvim para instalar nuevos plugins
+	vim.cmd("Lazy sync")
+
+	-- Mensaje de confirmación
+	vim.notify("Configuración recargada y plugins sincronizados", vim.log.levels.INFO)
+end, { noremap = true, silent = true, desc = "Recargar configuración y sincronizar plugins" })
