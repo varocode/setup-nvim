@@ -181,20 +181,28 @@ end, { desc = "Abrir Terminal en Split a la Derecha" })
 vim.keymap.set("n", "<leader>d1", ":lua Snacks.dashboard.open()<CR>", { desc = "Open Dashboard" })
 
 --- recargar neovim y sincronizar plugins
+
 vim.keymap.set("n", "<leader>rs", function()
-	-- Guardar todos los archivos abiertos antes de recargar
-	vim.cmd("wa")
+	-- 📂 Guardar el archivo actual antes de cargarlo
+	vim.cmd("write")
 
-	-- Volver a cargar la configuración de Neovim
-	for _, source in ipairs(vim.fn.glob(vim.fn.stdpath("config") .. "/lua/**/*.lua", true, true)) do
-		if not source:match("lazy%.lua$") then
-			dofile(source)
-		end
+	-- 🔄 Obtener el archivo actual
+	local current_file = vim.api.nvim_buf_get_name(0)
+
+	-- 🔄 Recargar el archivo actual en Neovim
+	vim.cmd("source " .. current_file)
+
+	-- 🔍 Buscar qué plugin está relacionado con este archivo
+	local plugin_name = current_file:match(".*/(.-)%.lua$")
+
+	if plugin_name then
+		-- 🚀 Intentar cargar el plugin asociado
+		require("lazy").load({ plugins = { plugin_name } })
+		vim.notify(
+			"Archivo " .. current_file .. " recargado y Lazy.nvim cargó el plugin '" .. plugin_name .. "'",
+			vim.log.levels.INFO
+		)
+	else
+		vim.notify("No se encontró un plugin asociado a este archivo.", vim.log.levels.WARN)
 	end
-
-	-- Sincronizar Lazy.nvim para instalar nuevos plugins
-	vim.cmd("Lazy sync")
-
-	-- Mensaje de confirmación
-	vim.notify("Configuración recargada y plugins sincronizados", vim.log.levels.INFO)
-end, { noremap = true, silent = true, desc = "Recargar configuración y sincronizar plugins" })
+end, { noremap = true, silent = true, desc = "Recargar archivo actual y cargar plugin relacionado" })
