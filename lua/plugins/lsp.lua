@@ -118,7 +118,18 @@ return {
 				},
 
 				-- 📌 Nuevos servidores LSP añadidos
-				pyright = {}, -- Soporte para Python
+				pyright = {
+					settings = {
+						python = {
+							analysis = {
+								typeCheckingMode = "basic", -- Cambia a "basic" o "strict" si quieres ver más errores
+								autoSearchPaths = true,
+								useLibraryCodeForTypes = true,
+							},
+						},
+					},
+				}, -- Soporte para Python
+
 				rust_analyzer = {}, -- Soporte para Rust
 				gopls = {}, -- Soporte para Go
 				jdtls = { -- Configuración específica para Java

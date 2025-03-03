@@ -125,9 +125,9 @@ vim.keymap.set("n", "<leader>Bt", ":BraceyEval<CR>", { desc = "Evaluar con Brace
 -- 📌 Asignar Ctrl + S para guardar en modo normal
 vim.api.nvim_set_keymap("n", "<C-s>", ":lua SaveFile()<CR>", { noremap = true, silent = true })
 
--- 📌 Asignar Ctrl + S para guardar en modo insert y visual
-vim.api.nvim_set_keymap("i", "<C-s>", "<Esc>:lua SaveFile()<CR>i", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-s>", "<Esc>:lua SaveFile()<CR>gv", { noremap = true, silent = true })
+-- 📌 Asignar Ctrl + S para guardar en modo insert y visual (corregido)
+vim.api.nvim_set_keymap("i", "<C-s>", "<Esc>:lua SaveFile()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-s>", "<Esc>:lua SaveFile()<CR>gv<Esc>", { noremap = true, silent = true })
 
 -- 💾 Función personalizada para guardar archivos
 function SaveFile()
@@ -153,3 +153,56 @@ function SaveFile()
 		vim.notify("❌ Error al guardar: " .. err, vim.log.levels.ERROR)
 	end
 end
+
+-- Atajos para python
+vim.api.nvim_set_keymap("n", "<leader>rf", ":!python %<CR>", { noremap = true }) -- Ejecutar el archivo actual
+vim.api.nvim_set_keymap("n", "<leader>rb", ":!black %<CR>", { noremap = true }) -- Formatear con Black
+
+-- Terminal snacks
+vim.keymap.set("n", "<leader>tf", function()
+	require("snacks.terminal").open(nil, {
+		win = { style = "float", border = "rounded", height = 0.5, width = 0.5 }, -- 50% de la pantalla
+	})
+end, { desc = "Abrir Terminal Flotante Pequeña" })
+
+vim.keymap.set("n", "<leader>ts", function()
+	require("snacks.terminal").open(nil, {
+		win = { style = "split", position = "bottom", height = 0.3 }, -- 30% de la pantalla abajo
+	})
+end, { desc = "Abrir Terminal en Split Abajo" })
+
+vim.keymap.set("n", "<leader>tr", function()
+	require("snacks.terminal").open(nil, {
+		win = { style = "split", position = "right", width = 0.3 }, -- 30% de la pantalla a la derecha
+	})
+end, { desc = "Abrir Terminal en Split a la Derecha" })
+
+-- crea un atajo de teclado para regresar al dashboard
+vim.keymap.set("n", "<leader>d1", ":lua Snacks.dashboard.open()<CR>", { desc = "Open Dashboard" })
+
+--- recargar neovim y sincronizar plugins
+
+vim.keymap.set("n", "<leader>rs", function()
+	-- 📂 Guardar el archivo actual antes de cargarlo
+	vim.cmd("write")
+
+	-- 🔄 Obtener el archivo actual
+	local current_file = vim.api.nvim_buf_get_name(0)
+
+	-- 🔄 Recargar el archivo actual en Neovim
+	vim.cmd("source " .. current_file)
+
+	-- 🔍 Buscar qué plugin está relacionado con este archivo
+	local plugin_name = current_file:match(".*/(.-)%.lua$")
+
+	if plugin_name then
+		-- 🚀 Intentar cargar el plugin asociado
+		require("lazy").load({ plugins = { plugin_name } })
+		vim.notify(
+			"Archivo " .. current_file .. " recargado y Lazy.nvim cargó el plugin '" .. plugin_name .. "'",
+			vim.log.levels.INFO
+		)
+	else
+		vim.notify("No se encontró un plugin asociado a este archivo.", vim.log.levels.WARN)
+	end
+end, { noremap = true, silent = true, desc = "Recargar archivo actual y cargar plugin relacionado" })

@@ -6,27 +6,33 @@ return {
 
 	{
 		-- 📌 Plugin: nvim-treesitter/nvim-treesitter
-		-- Habilita Treesitter en Neovim para un resaltado de sintaxis avanzado, 
+		-- Habilita Treesitter en Neovim para un resaltado de sintaxis avanzado,
 		-- mejor reconocimiento de estructuras de código y análisis profundo.
 		"nvim-treesitter/nvim-treesitter",
+		-- event = "VeryLazy", -- Se carga cuando abres un archivo
+		-- lazy = true, -- Se asegura que no cargue en el arranque
 		opts = {
 			-- 🔹 Lenguajes que se instalarán automáticamente
 			ensure_installed = {
-				"astro",
+				-- "astro",
 				"cmake",
 				"cpp",
 				"css",
-				"fish",
+				-- "fish",
 				"gitignore",
-				"go",
+				-- "go",
 				"graphql",
 				"http",
-				"java",
-				"php",
-				"rust",
+				-- "java",
+				-- "php",
+				-- "rust",
 				"scss",
-				"sql",
-				"svelte",
+				-- "sql",
+				-- "svelte",
+				"javascript",
+				"typescript",
+				"python",
+				"lua",
 			},
 
 			-- 🔎 Linter de consultas de Treesitter
@@ -44,7 +50,7 @@ return {
 				disable = {}, -- Lista de lenguajes donde se deshabilita (vacío significa que está activo en todos)
 				updatetime = 25, -- Tiempo de actualización para resaltar nodos en el Playground
 				persist_queries = true, -- Mantener las consultas de Treesitter entre sesiones de Neovim
-				
+
 				-- 🔹 Atajos de teclado para el Playground
 				keybindings = {
 					toggle_query_editor = "o", -- Alternar editor de consultas

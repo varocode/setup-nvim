@@ -227,6 +227,7 @@ return {
 				file_browser = {
 					theme = "dropdown", -- Diseño tipo dropdown
 					hijack_netrw = true, -- Desactivar netrw y usar file-browser en su lugar
+					hidden = true, -- Mostrar archivos ocultosq
 					mappings = {
 						["n"] = {
 							["N"] = fb_actions.create, -- Crear nuevo archivo
