@@ -108,19 +108,16 @@ vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", { desc = "Create New N
 vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Search Obsidian" })
 vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quick Switch" })
 
--- Bracey
+-- LiveServer
 
--- Iniciar Bracey
-vim.keymap.set("n", "<leader>Bs", ":Bracey<CR>", { desc = "Iniciar Bracey" })
+-- Iniciar LiveServer
+vim.keymap.set("n", "<leader>Bs", ":LiveServer<CR>", { desc = "Iniciar LiveServer" })
 
--- Detener Bracey
-vim.keymap.set("n", "<leader>Bp", ":BraceyStop<CR>", { desc = "Detener Bracey" })
+-- Encender LiveServer
+vim.keymap.set("n", "<leader>Bp", ":LiveServerStart<CR>", { desc = "Encender LiveServer" })
 
--- Recargar la página actual
-vim.keymap.set("n", "<leader>Br", ":BraceyReload<CR>", { desc = "Recargar Bracey" })
-
--- Evaluar el buffer actual en el navegador
-vim.keymap.set("n", "<leader>Bt", ":BraceyEval<CR>", { desc = "Evaluar con Bracey" })
+-- Detener LiveServer
+vim.keymap.set("n", "<leader>Br", ":LiveServerStop<CR>", { desc = "Detener LiveServer" })
 
 -- 📌 Asignar Ctrl + S para guardar en modo normal
 vim.api.nvim_set_keymap("n", "<C-s>", ":lua SaveFile()<CR>", { noremap = true, silent = true })

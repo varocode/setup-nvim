@@ -34,6 +34,7 @@ return {
 						"NormalFloat",
 						"NvimTreeNormal",
 						"FloatBorder",
+						"Pmenu", -- 🔥 Fondo del menú de autocompletado
 					},
 					exclude_groups = {}, -- Lista de grupos de resaltado que NO deben ser transparentes
 				})

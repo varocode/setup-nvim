@@ -112,11 +112,11 @@ return {
 	},
 
 	-- 🎭 Completado de emojis en `nvim-cmp`
-	{
-		"nvim-cmp",
-		dependencies = { "hrsh7th/cmp-emoji" },
-		opts = function(_, opts)
-			table.insert(opts.sources, { name = "emoji" }) -- Agrega emojis al autocompletado
-		end,
-	},
+	-- {
+	-- 	"nvim-cmp",
+	-- 	dependencies = { "hrsh7th/cmp-emoji" },
+	-- 	opts = function(_, opts)
+	-- 		table.insert(opts.sources, { name = "emoji" }) -- Agrega emojis al autocompletado
+	-- 	end,
+	-- },
 }

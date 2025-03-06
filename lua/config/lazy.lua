@@ -38,7 +38,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.markdown" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.lang.rust" },
-		{ import = "lazyvim.plugins.extras.lang.tailwind" },
+		--	{ import = "lazyvim.plugins.extras.lang.tailwind" },
 		{ import = "lazyvim.plugins.extras.lang.vue" },
 		{ import = "lazyvim.plugins.extras.lang.yaml" },
 
@@ -49,7 +49,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 
 		-- AI plugins
-		{ import = "lazyvim.plugins.extras.ai.copilot" },
+		--	{ import = "lazyvim.plugins.extras.ai.copilot" },
 		{ import = "lazyvim.plugins.extras.ai.copilot-chat" },
 		-- import/override with your plugins
 		{ import = "plugins" },
